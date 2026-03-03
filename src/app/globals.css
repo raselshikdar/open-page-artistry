@@ -1,0 +1,436 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Light mode — HSL space-separated values for tailwind.config.ts compatibility */
+:root {
+  --radius: 0.625rem;
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 211 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 220 14% 96%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 211 100% 50%;
+  --chart-1: 211 100% 50%;
+  --chart-2: 160 84% 39%;
+  --chart-3: 38 92% 50%;
+  --chart-4: 0 84% 60%;
+  --chart-5: 271 91% 65%;
+  --sidebar: 0 0% 100%;
+  --sidebar-foreground: 0 0% 0%;
+  --sidebar-primary: 211 100% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 14% 96%;
+  --sidebar-accent-foreground: 0 0% 0%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 211 100% 50%;
+}
+
+/* Premium dark mode — deep near-black with subtle blue undertone */
+.dark {
+  --background: 240 15% 6%;
+  --foreground: 240 15% 94%;
+  --card: 240 13% 9%;
+  --card-foreground: 240 15% 94%;
+  --popover: 240 12% 11%;
+  --popover-foreground: 240 15% 94%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 11% 14%;
+  --secondary-foreground: 240 10% 86%;
+  --muted: 240 11% 14%;
+  --muted-foreground: 240 8% 54%;
+  --accent: 240 11% 14%;
+  --accent-foreground: 240 15% 94%;
+  --destructive: 0 90% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 10% 16%;
+  --input: 240 10% 16%;
+  --ring: 207 90% 54%;
+  --chart-1: 207 90% 54%;
+  --chart-2: 160 84% 39%;
+  --chart-3: 38 92% 50%;
+  --chart-4: 0 84% 60%;
+  --chart-5: 271 91% 65%;
+  --sidebar: 240 15% 6%;
+  --sidebar-foreground: 240 15% 94%;
+  --sidebar-primary: 207 90% 54%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 11% 14%;
+  --sidebar-accent-foreground: 240 15% 94%;
+  --sidebar-border: 240 10% 16%;
+  --sidebar-ring: 207 90% 54%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  /* Override hardcoded Tailwind colors in dark mode */
+  .dark .bg-white {
+    background-color: hsl(var(--card)) !important;
+  }
+  .dark .bg-white\/95 {
+    background-color: hsl(var(--card) / 0.95) !important;
+  }
+  .dark .bg-gray-50 {
+    background-color: hsl(240 13% 9%) !important;
+  }
+  .dark .bg-gray-100 {
+    background-color: hsl(240 11% 14%) !important;
+  }
+  .dark .bg-gray-200 {
+    background-color: hsl(240 10% 16%) !important;
+  }
+  .dark .bg-gray-300 {
+    background-color: hsl(240 9% 20%) !important;
+  }
+  .dark .text-black {
+    color: hsl(var(--foreground)) !important;
+  }
+  .dark .text-gray-900 {
+    color: hsl(240 15% 94%) !important;
+  }
+  .dark .text-gray-800 {
+    color: hsl(240 12% 82%) !important;
+  }
+  .dark .text-gray-700 {
+    color: hsl(240 10% 74%) !important;
+  }
+  .dark .text-gray-600 {
+    color: hsl(240 8% 64%) !important;
+  }
+  .dark .text-gray-500 {
+    color: hsl(240 8% 54%) !important;
+  }
+  .dark .text-gray-400 {
+    color: hsl(240 6% 44%) !important;
+  }
+  .dark .border-gray-100 {
+    border-color: hsl(240 10% 13%) !important;
+  }
+  .dark .border-gray-200 {
+    border-color: hsl(var(--border)) !important;
+  }
+  .dark .border-gray-300 {
+    border-color: hsl(240 9% 20%) !important;
+  }
+  .dark .hover\:bg-gray-50:hover {
+    background-color: hsl(240 12% 11%) !important;
+  }
+  .dark .hover\:bg-gray-100:hover {
+    background-color: hsl(240 11% 14%) !important;
+  }
+  .dark .hover\:bg-gray-200:hover {
+    background-color: hsl(240 10% 16%) !important;
+  }
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: hsl(var(--input)) !important;
+    color: hsl(var(--foreground)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: hsl(var(--muted-foreground)) !important;
+  }
+  /* Keep toggle switch knob white */
+  .dark .bg-white.rounded-full {
+    background-color: #ffffff !important;
+  }
+}
+
+/* Custom scrollbar - exact bsky style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Hide scrollbar for trending topics */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth transitions */
+.transition-theme {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Safe area for mobile */
+.safe-area-inset-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Tab underline - EXACT bsky style: 3px height, rounded top corners */
+.tab-underline {
+  position: relative;
+}
+
+.tab-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #0085ff;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Button styles - exact bsky */
+.btn-primary {
+  background-color: #0085ff;
+  color: white;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  transition: background-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0070e0;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #000000;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  transition: background-color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #f3f4f6;
+}
+
+/* Post content line height - exact bsky */
+.post-content {
+  line-height: 1.35;
+}
+
+/* ===========================================
+   USER SETTINGS CSS CLASSES
+   =========================================== */
+
+/* Font Size Settings */
+.font-size-small {
+  font-size: 14px;
+}
+
+.font-size-small .text-\[15px\] {
+  font-size: 14px !important;
+}
+
+.font-size-small .text-\[17px\] {
+  font-size: 16px !important;
+}
+
+.font-size-medium {
+  font-size: 16px;
+}
+
+.font-size-large {
+  font-size: 18px;
+}
+
+.font-size-large .text-\[15px\] {
+  font-size: 17px !important;
+}
+
+.font-size-large .text-\[17px\] {
+  font-size: 19px !important;
+}
+
+/* Compact Mode Settings */
+.compact-mode .py-3\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.compact-mode .py-3 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.compact-mode .py-4 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.compact-mode .gap-4 {
+  gap: 0.75rem;
+}
+
+.compact-mode .gap-3 {
+  gap: 0.5rem;
+}
+
+.compact-mode .h-10 {
+  height: 2.25rem;
+}
+
+.compact-mode .h-11 {
+  height: 2.5rem;
+}
+
+/* High Contrast Settings */
+.high-contrast {
+  --foreground: #000000;
+  --muted-foreground: #1f2937;
+  --border: #000000;
+}
+
+.high-contrast.dark {
+  --foreground: #ffffff;
+  --muted-foreground: #e5e7eb;
+  --border: #ffffff;
+}
+
+.high-contrast * {
+  border-color: currentColor !important;
+}
+
+.high-contrast button,
+.high-contrast a {
+  text-decoration: underline;
+}
+
+/* Reduce Motion/Animations Settings */
+.reduce-motion,
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduce-motion .animate-spin {
+  animation: none !important;
+}
+
+.reduce-motion .transition-colors,
+.reduce-motion .transition-transform,
+.reduce-motion .transition-opacity,
+.reduce-motion .transition-all {
+  transition: none !important;
+}
+
+/* Screen Reader Optimizations */
+.screen-reader-mode {
+  letter-spacing: 0.02em;
+  word-spacing: 0.1em;
+  line-height: 1.6;
+}
+
+.screen-reader-mode *:focus {
+  outline: 3px solid #0085ff !important;
+  outline-offset: 2px;
+}
+
+/* Post Composer Animation - EXACT bsky slide up from bottom style */
+@keyframes slideUp {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
