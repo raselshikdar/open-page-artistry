@@ -134,10 +134,23 @@
   }
 
   /* Ensure sticky headers and navigation have solid backgrounds */
-  header[class*="sticky"],
-  nav[class*="sticky"],
-  nav[class*="fixed"] {
-    @apply bg-background;
+  header.sticky,
+  nav.sticky,
+  nav.fixed,
+  [class*="sticky top"],
+  [class*="fixed bottom"] {
+    background-color: hsl(var(--background)) !important;
+    border-color: hsl(var(--border)) !important;
+  }
+
+  /* Dark mode overrides for headers and nav */
+  .dark header.sticky,
+  .dark nav.sticky,
+  .dark nav.fixed,
+  .dark [class*="sticky top"],
+  .dark [class*="fixed bottom"] {
+    background-color: hsl(210 23% 8%) !important;
+    border-color: hsl(210 11% 20%) !important;
   }
 
   /* Keep toggle switch knob white in dark mode */
