@@ -206,7 +206,7 @@ function ConversationsList({
 }: ConversationsListProps) {
   return (
     <div className="h-full flex flex-col bg-background">
-      <header className="sticky top-0 z-20 flex items-center justify-between h-14 px-4 bg-background/95 backdrop-blur-sm border-b border-border">
+      <header className="sticky top-0 z-20 flex items-center justify-between h-14 px-4 bg-background border-b border-border">
         <div className="flex items-center gap-3">
           <button
             onClick={() => window.history.back()}

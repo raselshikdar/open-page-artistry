@@ -408,9 +408,9 @@ export function ProfilePage({ handle, onBack }: ProfilePageProps) {
           <div className="flex items-center gap-3 px-4 py-3">
             <button
               onClick={onBack || (() => router.push('/'))}
-              className="p-2 -ml-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+              className="p-2 -ml-2 rounded-full bg-background/80 hover:bg-muted transition-colors"
             >
-              <ArrowLeft className="h-5 w-5 text-white" />
+              <ArrowLeft className="h-5 w-5 text-foreground" />
             </button>
           </div>
         </div>

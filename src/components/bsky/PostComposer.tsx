@@ -568,7 +568,7 @@ export function PostComposer() {
                           <img src={img} alt="" className="w-full h-full object-cover" />
                           <button
                             onClick={() => setImages(images.filter((_, i) => i !== idx))}
-                            className="absolute top-1.5 right-1.5 h-6 w-6 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute top-1.5 right-1.5 h-6 w-6 rounded-full bg-background/80 text-foreground flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
                           >
                             <X className="h-3 w-3" />
                           </button>
