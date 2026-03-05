@@ -82,13 +82,14 @@
 
 /* Premium dark mode — Bluesky-inspired deep theme with 3-layer hierarchy */
 .dark {
-  /* Layer 1: Main page background (deepest) */
+  /* Layer 1: Main page background (deepest) — #0f1419 */
   --background: 210 23% 8%;
-  /* Layer 2: Post/card background (elevated) */
+  /* Layer 2: Post/card background (elevated) — #161b22 */
   --card: 210 20% 11%;
-  /* Layer 3: Divider/border lines (subtle separator) */
+  /* Layer 3: Divider/border lines (subtle separator) — #2f3336 */
   --border: 210 11% 20%;
   
+  /* Text colors — #e6edf3 for primary, #8b949e for secondary */
   --foreground: 210 16% 93%;
   --card-foreground: 210 16% 93%;
   --popover: 210 20% 13%;
@@ -133,6 +134,11 @@
     line-height: 1.35;
   }
 
+  /* Dark mode base colors with fallback hex values */
+  .dark {
+    color-scheme: dark;
+  }
+
   /* Ensure sticky headers and navigation have solid backgrounds */
   header.sticky,
   nav.sticky,
@@ -143,14 +149,21 @@
     border-color: hsl(var(--border)) !important;
   }
 
-  /* Dark mode overrides for headers and nav */
+  /* Dark mode overrides for headers and nav with fallback hex */
   .dark header.sticky,
   .dark nav.sticky,
   .dark nav.fixed,
   .dark [class*="sticky top"],
   .dark [class*="fixed bottom"] {
+    background-color: #0f1419 !important;
     background-color: hsl(210 23% 8%) !important;
+    border-color: #2f3336 !important;
     border-color: hsl(210 11% 20%) !important;
+  }
+
+  /* Ensure all .dark elements use proper background */
+  .dark {
+    background-color: #0f1419;
   }
 
   /* Keep toggle switch knob white in dark mode */
@@ -162,13 +175,13 @@
   .dark input,
   .dark textarea,
   .dark select {
-    background-color: hsl(var(--input)) !important;
-    color: hsl(var(--foreground)) !important;
-    border-color: hsl(var(--border)) !important;
+    background-color: hsl(var(--input), #1c2128) !important;
+    color: hsl(var(--foreground), #e6edf3) !important;
+    border-color: hsl(var(--border), #2f3336) !important;
   }
   .dark input::placeholder,
   .dark textarea::placeholder {
-    color: hsl(var(--muted-foreground)) !important;
+    color: hsl(var(--muted-foreground), #8b949e) !important;
   }
 }
 
