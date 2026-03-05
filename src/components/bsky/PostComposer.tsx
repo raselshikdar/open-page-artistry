@@ -457,8 +457,8 @@ export function PostComposer() {
               <div className="px-4 pt-3 flex items-center gap-2 text-[14px] text-muted-foreground">
                 <span>Replying to</span>
                 <span className="text-[#0085ff]">@{replyTo.author.handle}</span>
-                <button onClick={() => setReplyTo(null)} className="ml-auto p-1 hover:bg-gray-100 rounded-full">
-                  <X className="h-4 w-4 text-gray-400" />
+                <button onClick={() => setReplyTo(null)} className="ml-auto p-1 hover:bg-muted rounded-full">
+                  <X className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
             )}
@@ -468,9 +468,9 @@ export function PostComposer() {
                   <div className="border border-border rounded-lg p-2.5 relative bg-muted">
                   <button 
                     onClick={() => setQuotePost(null)}
-                    className="absolute right-2 top-2 p-1 hover:bg-gray-200 rounded-full"
+                    className="absolute right-2 top-2 p-1 hover:bg-muted rounded-full"
                   >
-                    <X className="h-4 w-4 text-gray-400" />
+                    <X className="h-4 w-4 text-muted-foreground" />
                   </button>
                   <div className="flex items-center gap-2 pr-6">
                     <Avatar className="h-5 w-5 rounded-full">
@@ -536,11 +536,11 @@ export function PostComposer() {
                   {/* Detected URL preview */}
                   {detectedUrl && (
                     <div className="mt-2 p-2 bg-muted rounded-lg flex items-center gap-2">
-                      <Link2 className="h-4 w-4 text-gray-400" />
+                      <Link2 className="h-4 w-4 text-muted-foreground" />
                       <span className="text-[13px] text-muted-foreground truncate flex-1">{detectedUrl}</span>
                       <button 
                         onClick={() => setDetectedUrl(null)}
-                        className="text-gray-400 hover:text-gray-600"
+                        className="text-muted-foreground hover:text-foreground"
                       >
                         <X className="h-3 w-3" />
                       </button>
@@ -549,9 +549,9 @@ export function PostComposer() {
 
                   {/* Upload error */}
                   {uploadError && (
-                    <div className="mt-2 p-2 bg-red-50 text-red-600 text-[13px] rounded-lg flex items-center justify-between">
+                    <div className="mt-2 p-2 bg-destructive/10 text-destructive text-[13px] rounded-lg flex items-center justify-between">
                       <span>{uploadError}</span>
-                      <button onClick={() => setUploadError(null)} className="p-1 hover:bg-red-100 rounded">
+                      <button onClick={() => setUploadError(null)} className="p-1 hover:bg-destructive/20 rounded">
                         <X className="h-3 w-3" />
                       </button>
                     </div>
@@ -564,7 +564,7 @@ export function PostComposer() {
                       images.length === 1 ? "grid-cols-1" : "grid-cols-2"
                     )}>
                       {images.map((img, idx) => (
-                        <div key={idx} className="relative rounded-lg overflow-hidden aspect-square group bg-gray-100">
+                        <div key={idx} className="relative rounded-lg overflow-hidden aspect-square group bg-muted">
                           <img src={img} alt="" className="w-full h-full object-cover" />
                           <button
                             onClick={() => setImages(images.filter((_, i) => i !== idx))}
@@ -579,7 +579,7 @@ export function PostComposer() {
 
                   {/* Uploading indicator */}
                   {isUploading && (
-                    <div className="mt-2 flex items-center gap-2 text-[13px] text-gray-500">
+                    <div className="mt-2 flex items-center gap-2 text-[13px] text-muted-foreground">
                       <Loader2 className="h-4 w-4 animate-spin" />
                       <span>Uploading image...</span>
                     </div>
@@ -606,12 +606,12 @@ export function PostComposer() {
                         setVisibility(option.value);
                         setShowVisibilityMenu(false);
                       }}
-                      className={cn(
-                        "w-full text-left px-3 py-2 rounded-lg text-[14px] text-black",
-                        visibility === option.value
-                          ? "bg-[#0085ff]/10 text-[#0085ff]"
-                          : "hover:bg-gray-100"
-                      )}
+                        className={cn(
+                          "w-full text-left px-3 py-2 rounded-lg text-[14px] text-foreground",
+                          visibility === option.value
+                            ? "bg-[#0085ff]/10 text-[#0085ff]"
+                            : "hover:bg-muted"
+                        )}
                     >
                       {option.label}
                     </button>
@@ -627,7 +627,7 @@ export function PostComposer() {
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isUploading || images.length >= 4}
                   className={cn(
-                    "p-2 rounded-full hover:bg-gray-100 text-[#0085ff]",
+                    "p-2 rounded-full hover:bg-muted text-[#0085ff]",
                     (isUploading || images.length >= 4) && "opacity-50 cursor-not-allowed"
                   )}
                   title="Add image"
@@ -637,20 +637,20 @@ export function PostComposer() {
 
                 <Popover open={showGifPicker} onOpenChange={setShowGifPicker}>
                   <PopoverTrigger asChild>
-                    <button className="px-2.5 py-1.5 rounded-md hover:bg-gray-100 text-[#0085ff] text-[12px] font-bold" title="Add GIF">
+                    <button className="px-2.5 py-1.5 rounded-md hover:bg-muted text-[#0085ff] text-[12px] font-bold" title="Add GIF">
                       GIF
                     </button>
                   </PopoverTrigger>
                   <PopoverContent className="w-72 p-3" align="start" sideOffset={5}>
                     <div className="mb-2">
-                      <h3 className="text-[14px] font-semibold text-black">Choose a GIF</h3>
+                      <h3 className="text-[14px] font-semibold text-foreground">Choose a GIF</h3>
                     </div>
                     <div className="grid grid-cols-2 gap-1.5">
                       {GIF_CATEGORIES.map((category) => (
                         <button
                           key={category}
                           onClick={() => setShowGifPicker(false)}
-                          className="px-3 py-2 text-[13px] text-left rounded-lg hover:bg-gray-100 text-black border border-gray-200"
+                          className="px-3 py-2 text-[13px] text-left rounded-lg hover:bg-muted text-foreground border border-border"
                         >
                           {category}
                         </button>
@@ -659,11 +659,11 @@ export function PostComposer() {
                   </PopoverContent>
                 </Popover>
 
-                <button className="p-2 rounded-full hover:bg-gray-100 text-[#0085ff]" title="Add video">
+                <button className="p-2 rounded-full hover:bg-muted text-[#0085ff]" title="Add video">
                   <Film className="h-5 w-5" />
                 </button>
 
-                <button className="p-2 rounded-full hover:bg-gray-100 text-[#0085ff]" title="Add link">
+                <button className="p-2 rounded-full hover:bg-muted text-[#0085ff]" title="Add link">
                   <Link2 className="h-5 w-5" />
                 </button>
 
@@ -671,7 +671,7 @@ export function PostComposer() {
                 <button 
                   onClick={() => setIsRepost(!isRepost)}
                   className={cn(
-                    "p-2 rounded-full hover:bg-gray-100",
+                    "p-2 rounded-full hover:bg-muted",
                     isRepost ? "text-green-500" : "text-[#0085ff]"
                   )}
                   title="Quote repost"
@@ -696,10 +696,10 @@ export function PostComposer() {
                           setShowLanguageMenu(false);
                         }}
                         className={cn(
-                          "w-full text-left px-3 py-2 rounded-lg text-[14px] text-black",
+                          "w-full text-left px-3 py-2 rounded-lg text-[14px] text-foreground",
                           language === lang.code
                             ? "bg-[#0085ff]/10 text-[#0085ff]"
-                            : "hover:bg-gray-100"
+                            : "hover:bg-muted"
                         )}
                       >
                         {lang.name}

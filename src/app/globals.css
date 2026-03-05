@@ -129,64 +129,12 @@
     line-height: 1.35;
   }
 
-  /* Override hardcoded Tailwind colors in dark mode */
-  .dark .bg-white {
-    background-color: hsl(var(--card)) !important;
+  /* Keep toggle switch knob white in dark mode */
+  .dark .bg-white.rounded-full {
+    background-color: #ffffff !important;
   }
-  .dark .bg-white\/95 {
-    background-color: hsl(var(--card) / 0.95) !important;
-  }
-  .dark .bg-gray-50 {
-    background-color: hsl(240 13% 9%) !important;
-  }
-  .dark .bg-gray-100 {
-    background-color: hsl(240 11% 14%) !important;
-  }
-  .dark .bg-gray-200 {
-    background-color: hsl(240 10% 16%) !important;
-  }
-  .dark .bg-gray-300 {
-    background-color: hsl(240 9% 20%) !important;
-  }
-  .dark .text-black {
-    color: hsl(var(--foreground)) !important;
-  }
-  .dark .text-gray-900 {
-    color: hsl(240 15% 94%) !important;
-  }
-  .dark .text-gray-800 {
-    color: hsl(240 12% 82%) !important;
-  }
-  .dark .text-gray-700 {
-    color: hsl(240 10% 74%) !important;
-  }
-  .dark .text-gray-600 {
-    color: hsl(240 8% 64%) !important;
-  }
-  .dark .text-gray-500 {
-    color: hsl(240 8% 54%) !important;
-  }
-  .dark .text-gray-400 {
-    color: hsl(240 6% 44%) !important;
-  }
-  .dark .border-gray-100 {
-    border-color: hsl(240 10% 13%) !important;
-  }
-  .dark .border-gray-200 {
-    border-color: hsl(var(--border)) !important;
-  }
-  .dark .border-gray-300 {
-    border-color: hsl(240 9% 20%) !important;
-  }
-  .dark .hover\:bg-gray-50:hover {
-    background-color: hsl(240 12% 11%) !important;
-  }
-  .dark .hover\:bg-gray-100:hover {
-    background-color: hsl(240 11% 14%) !important;
-  }
-  .dark .hover\:bg-gray-200:hover {
-    background-color: hsl(240 10% 16%) !important;
-  }
+
+  /* Ensure form elements respect theme in dark mode */
   .dark input,
   .dark textarea,
   .dark select {
@@ -197,10 +145,6 @@
   .dark input::placeholder,
   .dark textarea::placeholder {
     color: hsl(var(--muted-foreground)) !important;
-  }
-  /* Keep toggle switch knob white */
-  .dark .bg-white.rounded-full {
-    background-color: #ffffff !important;
   }
 }
 
@@ -224,11 +168,11 @@
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #374151;
+  background: hsl(240 10% 20%);
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #4b5563;
+  background: hsl(240 10% 28%);
 }
 
 /* Hide scrollbar for trending topics */
@@ -283,16 +227,16 @@
 
 .btn-secondary {
   background-color: transparent;
-  color: #000000;
+  color: hsl(var(--foreground));
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 9999px;
-  border: 1px solid #d1d5db;
+  border: 1px solid hsl(var(--border));
   transition: background-color 0.15s ease;
 }
 
 .btn-secondary:hover {
-  background-color: #f3f4f6;
+  background-color: hsl(var(--muted));
 }
 
 /* Post content line height - exact bsky */

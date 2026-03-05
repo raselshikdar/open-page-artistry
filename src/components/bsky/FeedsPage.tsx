@@ -82,30 +82,30 @@ export function FeedsPage({ onOpenSettings, onFeedSelect, onBack }: FeedsPagePro
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 z-20 bg-white border-b border-gray-200">
+      <div className="sticky top-0 z-20 bg-background border-b border-border">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <button 
               onClick={onBack}
-              className="p-2 -ml-2 rounded-full hover:bg-gray-100"
+              className="p-2 -ml-2 rounded-full hover:bg-muted"
             >
-              <ArrowLeft className="h-5 w-5 text-black" />
+              <ArrowLeft className="h-5 w-5 text-foreground" />
             </button>
-            <h1 className="text-[17px] font-semibold text-black">Feeds</h1>
+            <h1 className="text-[17px] font-semibold text-foreground">Feeds</h1>
           </div>
           <button 
             onClick={onOpenSettings}
-            className="p-2 -mr-2 rounded-full hover:bg-gray-100"
+            className="p-2 -mr-2 rounded-full hover:bg-muted"
           >
-            <Settings className="h-5 w-5 text-black" />
+            <Settings className="h-5 w-5 text-foreground" />
           </button>
         </div>
       </div>
 
       {/* My Feeds Section */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-border">
         <div className="flex items-center gap-3 px-4 py-3">
           <div className="h-10 w-10 rounded-full bg-[#0085ff] flex items-center justify-center">
             <svg viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="currentColor">
@@ -113,8 +113,8 @@ export function FeedsPage({ onOpenSettings, onFeedSelect, onBack }: FeedsPagePro
             </svg>
           </div>
           <div className="flex-1">
-            <h2 className="text-[15px] font-semibold text-black">My Feeds</h2>
-            <p className="text-[13px] text-gray-500">All the feeds you've saved, right in one place.</p>
+            <h2 className="text-[15px] font-semibold text-foreground">My Feeds</h2>
+            <p className="text-[13px] text-muted-foreground">All the feeds you've saved, right in one place.</p>
           </div>
         </div>
 
@@ -124,40 +124,40 @@ export function FeedsPage({ onOpenSettings, onFeedSelect, onBack }: FeedsPagePro
             <button
               key={feed.id}
               onClick={() => onFeedSelect?.(feed.id)}
-              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-muted transition-colors"
             >
               <div className="h-10 w-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: feed.color }}>
                 <feed.icon className="h-5 w-5 text-white" />
               </div>
-              <span className="flex-1 text-left text-[15px] font-medium text-black">{feed.name}</span>
-              <ChevronRight className="h-5 w-5 text-gray-400" />
+              <span className="flex-1 text-left text-[15px] font-medium text-foreground">{feed.name}</span>
+              <ChevronRight className="h-5 w-5 text-muted-foreground" />
             </button>
           ))}
         </div>
       </div>
 
       {/* Discover New Feeds Section */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-border">
         <div className="flex items-center gap-3 px-4 py-3">
           <div className="h-10 w-10 rounded-full bg-[#0085ff] flex items-center justify-center">
             <Search className="h-5 w-5 text-white" />
           </div>
           <div className="flex-1">
-            <h2 className="text-[15px] font-semibold text-black">Discover New Feeds</h2>
-            <p className="text-[13px] text-gray-500">Choose your own timeline! Feeds built by the community help you find content you love.</p>
+            <h2 className="text-[15px] font-semibold text-foreground">Discover New Feeds</h2>
+            <p className="text-[13px] text-muted-foreground">Choose your own timeline! Feeds built by the community help you find content you love.</p>
           </div>
         </div>
 
         {/* Search Bar */}
         <div className="px-4 pb-3">
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
-            <Search className="h-4 w-4 text-gray-400" />
+          <div className="flex items-center gap-2 bg-muted rounded-lg px-3 py-2">
+            <Search className="h-4 w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search feeds"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="flex-1 bg-transparent text-[15px] text-black placeholder-gray-400 outline-none"
+              className="flex-1 bg-transparent text-[15px] text-foreground placeholder-muted-foreground outline-none"
             />
           </div>
         </div>
@@ -167,7 +167,7 @@ export function FeedsPage({ onOpenSettings, onFeedSelect, onBack }: FeedsPagePro
           {discoverFeeds.map((feed) => (
             <div
               key={feed.id}
-              className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+              className="flex items-start gap-3 px-4 py-3 hover:bg-muted transition-colors"
             >
               <div 
                 className="h-10 w-10 rounded-lg flex items-center justify-center text-white font-bold text-[14px] shrink-0"
@@ -177,7 +177,7 @@ export function FeedsPage({ onOpenSettings, onFeedSelect, onBack }: FeedsPagePro
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="text-[15px] font-medium text-black">{feed.name}</h3>
+                  <h3 className="text-[15px] font-medium text-foreground">{feed.name}</h3>
                   <Button
                     variant="outline"
                     size="sm"
@@ -186,16 +186,16 @@ export function FeedsPage({ onOpenSettings, onFeedSelect, onBack }: FeedsPagePro
                       "h-8 px-3 text-[13px] rounded-full border",
                       pinnedFeeds.includes(feed.id)
                         ? "bg-[#0085ff] border-[#0085ff] text-white"
-                        : "border-gray-300 text-black hover:bg-gray-50"
+                        : "border-border text-foreground hover:bg-muted"
                     )}
                   >
                     <Pin className="h-3 w-3 mr-1" />
                     {pinnedFeeds.includes(feed.id) ? 'Pinned' : 'Pin Feed'}
                   </Button>
                 </div>
-                <p className="text-[13px] text-gray-500">Feed by {feed.creator}</p>
-                <p className="text-[13px] text-gray-600 mt-1">{feed.description}</p>
-                <p className="text-[12px] text-gray-400 mt-1">Liked by {formatLikes(feed.likes)} users</p>
+                <p className="text-[13px] text-muted-foreground">Feed by {feed.creator}</p>
+                <p className="text-[13px] text-muted-foreground mt-1">{feed.description}</p>
+                <p className="text-[12px] text-muted-foreground mt-1">Liked by {formatLikes(feed.likes)} users</p>
               </div>
             </div>
           ))}
@@ -267,17 +267,17 @@ export function FeedsSettingsPage({ onBack, onSave }: FeedsSettingsPageProps) {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-background min-h-screen">
       {/* Header */}
-      <div className="sticky top-0 z-20 bg-white border-b border-gray-200">
+      <div className="sticky top-0 z-20 bg-background border-b border-border">
         <div className="flex items-center justify-between px-4 py-3">
-          <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-gray-100">
-            <ArrowLeft className="h-5 w-5 text-black" />
+          <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-muted">
+            <ArrowLeft className="h-5 w-5 text-foreground" />
           </button>
-          <h1 className="text-[17px] font-semibold text-black">Feeds</h1>
+          <h1 className="text-[17px] font-semibold text-foreground">Feeds</h1>
           <Button 
             variant="ghost" 
-            className="text-[15px] text-gray-400 hover:text-black"
+            className="text-[15px] text-muted-foreground hover:text-foreground"
             onClick={onSave}
           >
             Save
@@ -286,48 +286,48 @@ export function FeedsSettingsPage({ onBack, onSave }: FeedsSettingsPageProps) {
       </div>
 
       {/* Pinned Feeds */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-border">
         <div className="px-4 py-3">
-          <h2 className="text-[15px] font-semibold text-black">Pinned Feeds</h2>
+          <h2 className="text-[15px] font-semibold text-foreground">Pinned Feeds</h2>
         </div>
         {pinnedFeeds.map((feed, index) => {
           const Icon = getFeedIcon(feed.id);
           return (
             <div
               key={feed.id}
-              className="flex items-center gap-3 px-4 py-3 border-b border-gray-100 last:border-b-0"
+              className="flex items-center gap-3 px-4 py-3 border-b border-border last:border-b-0"
             >
               <div className="h-10 w-10 rounded-lg bg-[#0085ff] flex items-center justify-center shrink-0">
                 <Icon className="h-5 w-5 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-[15px] font-medium text-black">{feed.name}</h3>
+                <h3 className="text-[15px] font-medium text-foreground">{feed.name}</h3>
                 {feed.creator && (
-                  <p className="text-[13px] text-gray-500">Feed by {feed.creator}</p>
+                  <p className="text-[13px] text-muted-foreground">Feed by {feed.creator}</p>
                 )}
               </div>
               <div className="flex items-center gap-1 shrink-0">
                 <button
                   onClick={() => moveFeedUp(index)}
                   disabled={index === 0}
-                  className="p-1.5 rounded hover:bg-gray-100 disabled:opacity-30"
+                  className="p-1.5 rounded hover:bg-muted disabled:opacity-30"
                 >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 15l-6-6-6 6" />
                   </svg>
                 </button>
                 <button
                   onClick={() => moveFeedDown(index)}
                   disabled={index === pinnedFeeds.length - 1}
-                  className="p-1.5 rounded hover:bg-gray-100 disabled:opacity-30"
+                  className="p-1.5 rounded hover:bg-muted disabled:opacity-30"
                 >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </button>
                 <button
                   onClick={() => unpinFeed(feed)}
-                  className="p-1.5 rounded hover:bg-gray-100"
+                  className="p-1.5 rounded hover:bg-muted"
                 >
                   <Pin className="h-4 w-4 text-[#0085ff]" />
                 </button>
@@ -338,40 +338,40 @@ export function FeedsSettingsPage({ onBack, onSave }: FeedsSettingsPageProps) {
       </div>
 
       {/* Saved Feeds */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-border">
         <div className="px-4 py-3">
-          <h2 className="text-[15px] font-semibold text-black">Saved Feeds</h2>
+          <h2 className="text-[15px] font-semibold text-foreground">Saved Feeds</h2>
         </div>
         {savedFeeds.map((feed) => {
           const Icon = getFeedIcon(feed.id);
           return (
             <div
               key={feed.id}
-              className="flex items-center gap-3 px-4 py-3 border-b border-gray-100 last:border-b-0"
+              className="flex items-center gap-3 px-4 py-3 border-b border-border last:border-b-0"
             >
               <div className="h-10 w-10 rounded-lg bg-[#0085ff] flex items-center justify-center shrink-0">
                 <Icon className="h-5 w-5 text-white" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-[15px] font-medium text-black">{feed.name}</h3>
+                <h3 className="text-[15px] font-medium text-foreground">{feed.name}</h3>
                 {feed.creator && (
-                  <p className="text-[13px] text-gray-500">Feed by {feed.creator}</p>
+                  <p className="text-[13px] text-muted-foreground">Feed by {feed.creator}</p>
                 )}
               </div>
               <div className="flex items-center gap-1 shrink-0">
                 <button
                   onClick={() => deleteFeed(feed.id)}
-                  className="p-1.5 rounded hover:bg-gray-100"
+                  className="p-1.5 rounded hover:bg-muted"
                 >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z" />
                   </svg>
                 </button>
                 <button
                   onClick={() => pinFeed(feed)}
-                  className="p-1.5 rounded hover:bg-gray-100"
+                  className="p-1.5 rounded hover:bg-muted"
                 >
-                  <Pin className="h-4 w-4 text-gray-400" />
+                  <Pin className="h-4 w-4 text-muted-foreground" />
                 </button>
               </div>
             </div>
@@ -381,7 +381,7 @@ export function FeedsSettingsPage({ onBack, onSave }: FeedsSettingsPageProps) {
 
       {/* Info Text */}
       <div className="px-4 py-4">
-        <p className="text-[13px] text-gray-500">
+        <p className="text-[13px] text-muted-foreground">
           Feeds are custom algorithms that users build with a little coding expertise.{' '}
           <span className="text-[#0085ff]">See this guide</span> for more information.
         </p>

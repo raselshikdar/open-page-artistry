@@ -366,14 +366,14 @@ export function NotificationsPage() {
                 size="sm"
                 onClick={handleMarkAllAsRead}
                 disabled={isMarkingAllRead}
-                className="text-sm text-gray-500 hover:text-black"
+                className="text-sm text-muted-foreground hover:text-foreground"
               >
                 {isMarkingAllRead ? 'Marking...' : 'Mark all read'}
               </Button>
             )}
-            <Button variant="ghost" size="icon" className="shrink-0 rounded-full hover:bg-gray-100" asChild>
+            <Button variant="ghost" size="icon" className="shrink-0 rounded-full hover:bg-muted" asChild>
               <Link href="/settings">
-                <Settings className="h-5 w-5 text-black" />
+                <Settings className="h-5 w-5 text-foreground" />
               </Link>
             </Button>
           </div>

@@ -207,7 +207,7 @@ function InterestTag({ interest, selected, onToggle }: InterestTagProps) {
         border-2 hover:border-[#0085ff] hover:bg-[#0085ff]/5
         ${selected 
           ? 'bg-[#0085ff] text-white border-[#0085ff] hover:bg-[#0070e0]' 
-          : 'bg-white text-gray-700 border-gray-200'
+          : 'bg-background text-foreground border-border'
         }
       `}
     >
@@ -244,7 +244,7 @@ function FeedCard({ feed, onPinToggle }: FeedCardProps) {
               <h3 className="font-semibold truncate">{feed.name}</h3>
             </div>
             <p className="text-sm text-muted-foreground truncate">by {feed.creator}</p>
-            <p className="text-sm text-gray-600 mt-1 line-clamp-2">{feed.description}</p>
+            <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{feed.description}</p>
             
             <div className="flex items-center justify-between mt-3">
               <span className="text-xs text-muted-foreground">
@@ -284,14 +284,14 @@ interface TrendingTopicCardProps {
 
 function TrendingTopicCard({ topic, rank }: TrendingTopicCardProps) {
   return (
-    <div className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg cursor-pointer transition-colors">
-      <span className="text-lg font-bold text-gray-400 w-6">{rank}</span>
+    <div className="flex items-start gap-3 p-3 hover:bg-muted rounded-lg cursor-pointer transition-colors">
+      <span className="text-lg font-bold text-muted-foreground w-6">{rank}</span>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1">
           <Hash className="w-4 h-4 text-[#0085ff]" />
           <span className="font-semibold text-[#0085ff]">{topic.topic.replace('#', '')}</span>
         </div>
-        <p className="text-sm text-gray-600 mt-0.5">{topic.description}</p>
+        <p className="text-sm text-muted-foreground mt-0.5">{topic.description}</p>
         <p className="text-xs text-muted-foreground mt-1">
           {formatNumber(topic.postCount)} posts
         </p>
@@ -307,7 +307,7 @@ interface SuggestedUserCardProps {
 
 function SuggestedUserCard({ user }: SuggestedUserCardProps) {
   return (
-    <div className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+    <div className="flex items-center gap-3 p-3 hover:bg-muted rounded-lg transition-colors">
       <UserAvatar 
         user={user} 
         size="md" 
@@ -388,15 +388,15 @@ export function ExplorePage() {
   return (
     <div className="max-w-3xl mx-auto">
       {/* Header with Back Button */}
-      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b">
+      <div className="sticky top-0 z-20 bg-background border-b border-border">
         <div className="flex items-center gap-3 px-4 py-3">
           <button
             onClick={() => window.history.back()}
-            className="p-2 -ml-2 rounded-full hover:bg-gray-100"
+            className="p-2 -ml-2 rounded-full hover:bg-muted"
           >
-            <ArrowLeft className="h-5 w-5 text-black" />
+            <ArrowLeft className="h-5 w-5 text-foreground" />
           </button>
-          <h1 className="text-[17px] font-semibold text-black">Explore</h1>
+          <h1 className="text-[17px] font-semibold text-foreground">Explore</h1>
         </div>
         
         {/* Search Bar */}
@@ -408,7 +408,7 @@ export function ExplorePage() {
               placeholder="Search users and posts..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 pr-10 h-11 rounded-full bg-gray-100 border-none focus-visible:ring-[#0085ff]"
+              className="pl-10 pr-10 h-11 rounded-full bg-muted border-none focus-visible:ring-[#0085ff]"
             />
             {searchQuery && (
               <button
@@ -416,7 +416,7 @@ export function ExplorePage() {
                 onClick={() => setSearchQuery('')}
                 className="absolute right-3 top-1/2 -translate-y-1/2"
               >
-                <X className="w-5 h-5 text-muted-foreground hover:text-gray-700" />
+                <X className="w-5 h-5 text-muted-foreground hover:text-foreground" />
               </button>
             )}
           </div>

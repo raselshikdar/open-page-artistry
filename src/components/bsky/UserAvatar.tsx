@@ -66,9 +66,9 @@ export function UserAvatar({
           </Link>
         ) : (
           <>
-            <p className="font-semibold text-[15px] text-black truncate">{user.displayName || user.handle}</p>
+            <p className="font-semibold text-[15px] text-foreground truncate">{user.displayName || user.handle}</p>
             {showHandle && (
-              <p className="text-[14px] text-gray-500 truncate">@{user.handle}</p>
+              <p className="text-[14px] text-muted-foreground truncate">@{user.handle}</p>
             )}
           </>
         )}
@@ -118,7 +118,7 @@ export function FollowButton({ targetUser, size = 'sm' }: FollowButtonProps) {
       className={cn(
         'rounded-full font-medium text-[14px]',
         isFollowing 
-          ? 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300' 
+          ? 'bg-muted text-foreground hover:bg-accent border border-border' 
           : 'bg-[#0085ff] hover:bg-[#0070e0] text-white',
         size === 'sm' ? 'h-8 px-4' : 'h-9 px-5'
       )}
