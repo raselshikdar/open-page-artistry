@@ -210,7 +210,7 @@ export function Post({
   return (
     <article
       className={cn(
-        'border-b border-border bg-background cursor-pointer hover:bg-muted/40 transition-colors',
+        'border-b border-border bg-card cursor-pointer hover:bg-muted/40 transition-colors',
         compact ? 'p-3' : 'py-3 px-4'
       )}
       onClick={handleCardClick}
@@ -327,7 +327,7 @@ export function Post({
           {/* Quote Post */}
           {post.quotePost && (
             <div
-              className="mt-2.5 border border-border rounded-xl p-3 hover:bg-muted/60 transition-colors"
+              className="mt-2.5 border border-border rounded-xl p-3 bg-background hover:bg-muted/40 transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
                 if (onPostClick) onPostClick(post.quotePost!.id);
@@ -483,7 +483,7 @@ export function Post({
 
 export function PostSkeleton() {
   return (
-    <article className="border-b border-border py-3 px-4 bg-background">
+    <article className="border-b border-border py-3 px-4 bg-card">
       <div className="flex gap-3 animate-pulse">
         <div className="h-10 w-10 rounded-full bg-muted" />
         <div className="flex-1 space-y-2">
