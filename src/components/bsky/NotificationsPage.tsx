@@ -348,7 +348,7 @@ export function NotificationsPage() {
   return (
     <>
       {/* Header with Back Button */}
-      <div className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="sticky top-0 z-20 bg-background border-b border-border">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <button
