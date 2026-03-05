@@ -80,39 +80,43 @@
   --sidebar-ring: 211 100% 50%;
 }
 
-/* Premium dark mode — deep near-black with subtle blue undertone */
+/* Premium dark mode — Bluesky-inspired deep theme with 3-layer hierarchy */
 .dark {
-  --background: 240 15% 6%;
-  --foreground: 240 15% 94%;
-  --card: 240 13% 9%;
-  --card-foreground: 240 15% 94%;
-  --popover: 240 12% 11%;
-  --popover-foreground: 240 15% 94%;
+  /* Layer 1: Main page background (deepest) */
+  --background: 210 23% 8%;
+  /* Layer 2: Post/card background (elevated) */
+  --card: 210 20% 11%;
+  /* Layer 3: Divider/border lines (subtle separator) */
+  --border: 210 11% 20%;
+  
+  --foreground: 210 16% 93%;
+  --card-foreground: 210 16% 93%;
+  --popover: 210 20% 13%;
+  --popover-foreground: 210 16% 93%;
   --primary: 207 90% 54%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 240 11% 14%;
-  --secondary-foreground: 240 10% 86%;
-  --muted: 240 11% 14%;
-  --muted-foreground: 240 8% 54%;
-  --accent: 240 11% 14%;
-  --accent-foreground: 240 15% 94%;
+  --secondary: 210 20% 14%;
+  --secondary-foreground: 210 16% 86%;
+  --muted: 210 20% 14%;
+  --muted-foreground: 210 8% 59%;
+  --accent: 210 20% 14%;
+  --accent-foreground: 210 16% 93%;
   --destructive: 0 90% 60%;
   --destructive-foreground: 0 0% 100%;
-  --border: 240 10% 20%;
-  --input: 240 10% 16%;
+  --input: 210 20% 13%;
   --ring: 207 90% 54%;
   --chart-1: 207 90% 54%;
   --chart-2: 160 84% 39%;
   --chart-3: 38 92% 50%;
   --chart-4: 0 84% 60%;
   --chart-5: 271 91% 65%;
-  --sidebar: 240 15% 6%;
-  --sidebar-foreground: 240 15% 94%;
+  --sidebar: 210 23% 8%;
+  --sidebar-foreground: 210 16% 93%;
   --sidebar-primary: 207 90% 54%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 11% 14%;
-  --sidebar-accent-foreground: 240 15% 94%;
-  --sidebar-border: 240 10% 20%;
+  --sidebar-accent: 210 20% 14%;
+  --sidebar-accent-foreground: 210 16% 93%;
+  --sidebar-border: 210 11% 20%;
   --sidebar-ring: 207 90% 54%;
 }
 
