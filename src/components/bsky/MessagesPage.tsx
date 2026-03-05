@@ -257,7 +257,7 @@ function ConversationsList({
                   )}>
                     {conv.partner.displayName || conv.partner.handle}
                   </p>
-                  <span className="text-xs text-gray-400 whitespace-nowrap">
+                  <span className="text-xs text-muted-foreground whitespace-nowrap">
                     {formatMessageTime(conv.lastMessage.createdAt)}
                   </span>
                 </div>
@@ -298,11 +298,11 @@ function TypingIndicator() {
   return (
     <div className="flex items-center gap-2 px-4 py-2">
       <div className="flex gap-1">
-        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-        <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+        <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+        <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+        <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
       </div>
-      <span className="text-xs text-gray-400">typing...</span>
+      <span className="text-xs text-muted-foreground">typing...</span>
     </div>
   );
 }
@@ -421,8 +421,8 @@ function ChatView({
             <div className="w-16 h-16 rounded-full bg-[#0085ff]/10 flex items-center justify-center mb-4">
               <MessageCircle className="h-8 w-8 text-[#0085ff]" />
             </div>
-            <p className="font-medium text-gray-700">No messages yet</p>
-            <p className="text-sm text-gray-500">Send a message to start the conversation</p>
+            <p className="font-medium text-foreground">No messages yet</p>
+            <p className="text-sm text-muted-foreground">Send a message to start the conversation</p>
           </div>
         ) : (
           <div className="space-y-1">
@@ -491,7 +491,7 @@ function ChatView({
                           {/* Timestamp and Read Status */}
                           <div className={cn(
                             'flex items-center justify-end gap-1 mt-0.5',
-                            isOwnMessage ? 'text-white/70' : 'text-gray-400'
+                            isOwnMessage ? 'text-white/70' : 'text-muted-foreground'
                           )}>
                             <span className="text-[10px]">
                               {format(new Date(message.createdAt), 'h:mm a')}
@@ -523,9 +523,9 @@ function ChatView({
                 </Avatar>
                 <div className="bg-card px-3 py-2 rounded-2xl rounded-tl-sm shadow-sm">
                   <div className="flex gap-1">
-                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               </div>
@@ -552,12 +552,12 @@ function ChatView({
         
         <div className="flex items-center gap-1.5">
           {/* Attachment button */}
-          <Button variant="ghost" size="icon" className="rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+          <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-foreground hover:bg-muted shrink-0">
             <Paperclip className="h-5 w-5" />
           </Button>
           
           {/* Emoji button */}
-          <Button variant="ghost" size="icon" className="rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+          <Button variant="ghost" size="icon" className="rounded-full text-muted-foreground hover:text-foreground hover:bg-muted shrink-0">
             <Smile className="h-5 w-5" />
           </Button>
           
@@ -828,8 +828,8 @@ export function MessagesPage() {
         ) : (
           <div className="flex-1 flex items-center justify-center text-muted-foreground bg-background">
             <div className="text-center">
-              <MessageCircle className="h-12 w-12 mx-auto mb-2 text-gray-400" />
-              <p className="text-gray-600">Select a conversation to start messaging</p>
+              <MessageCircle className="h-12 w-12 mx-auto mb-2 text-muted-foreground" />
+              <p className="text-muted-foreground">Select a conversation to start messaging</p>
             </div>
           </div>
         )}

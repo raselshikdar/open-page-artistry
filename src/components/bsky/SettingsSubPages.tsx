@@ -56,7 +56,7 @@ function ToggleSwitch({ enabled, onChange }: { enabled: boolean; onChange: (enab
       onClick={() => onChange(!enabled)}
       className={cn(
         "relative w-11 h-6 rounded-full transition-colors",
-        enabled ? "bg-[#0085ff]" : "bg-gray-300"
+        enabled ? "bg-[#0085ff]" : "bg-muted-foreground/30"
       )}
     >
       <span
@@ -242,34 +242,34 @@ function ChangePasswordModal({ isOpen, onClose, token }: {
     <Modal isOpen={isOpen} onClose={onClose} title="Change Password">
       <form onSubmit={handleSubmit} className="p-4 space-y-4">
         {error && (
-          <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-lg text-[14px]">
+          <div className="flex items-center gap-2 p-3 bg-destructive/10 text-destructive rounded-lg text-[14px]">
             <AlertCircle className="h-4 w-4 shrink-0" />
             {error}
           </div>
         )}
         
         {success && (
-          <div className="flex items-center gap-2 p-3 bg-green-50 text-green-700 rounded-lg text-[14px]">
+          <div className="flex items-center gap-2 p-3 bg-green-500/10 text-green-600 dark:text-green-400 rounded-lg text-[14px]">
             <Check className="h-4 w-4 shrink-0" />
             Password changed successfully!
           </div>
         )}
 
         <div>
-          <label className="text-[13px] text-gray-500">Current Password</label>
+          <label className="text-[13px] text-muted-foreground">Current Password</label>
           <div className="relative mt-1">
             <Input
               type={showCurrentPassword ? 'text' : 'password'}
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
-              className="pr-10 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+              className="pr-10 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
               placeholder="Enter current password"
               required
             />
             <button
               type="button"
               onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
             >
               {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
@@ -277,20 +277,20 @@ function ChangePasswordModal({ isOpen, onClose, token }: {
         </div>
 
         <div>
-          <label className="text-[13px] text-gray-500">New Password</label>
+          <label className="text-[13px] text-muted-foreground">New Password</label>
           <div className="relative mt-1">
             <Input
               type={showNewPassword ? 'text' : 'password'}
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="pr-10 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+              className="pr-10 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
               placeholder="Enter new password"
               required
             />
             <button
               type="button"
               onClick={() => setShowNewPassword(!showNewPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
             >
               {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
@@ -298,12 +298,12 @@ function ChangePasswordModal({ isOpen, onClose, token }: {
         </div>
 
         <div>
-          <label className="text-[13px] text-gray-500">Confirm New Password</label>
+          <label className="text-[13px] text-muted-foreground">Confirm New Password</label>
           <Input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="mt-1 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+            className="mt-1 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
             placeholder="Confirm new password"
             required
           />
@@ -338,21 +338,21 @@ function BlockedAccountItem({
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
       <Avatar className="h-10 w-10 rounded-full">
         <AvatarImage src={user.avatar || undefined} />
         <AvatarFallback>{(user.displayName || user.handle)[0].toUpperCase()}</AvatarFallback>
       </Avatar>
       <div className="flex-1 min-w-0">
-        <p className="text-[15px] font-medium text-black truncate">{user.displayName || user.handle}</p>
-        <p className="text-[13px] text-gray-500 truncate">@{user.handle}</p>
+        <p className="text-[15px] font-medium text-foreground truncate">{user.displayName || user.handle}</p>
+        <p className="text-[13px] text-muted-foreground truncate">@{user.handle}</p>
       </div>
       <Button
         variant="outline"
         size="sm"
         onClick={handleUnblock}
         disabled={isUnblocking}
-        className="rounded-full text-[13px] h-8 px-4 border-gray-300 text-black hover:bg-gray-100"
+        className="rounded-full text-[13px] h-8 px-4 border-border text-foreground hover:bg-muted"
       >
         {isUnblocking ? 'Unblocking...' : 'Unblock'}
       </Button>
@@ -377,21 +377,21 @@ function MutedAccountItem({
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-100">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-border">
       <Avatar className="h-10 w-10 rounded-full">
         <AvatarImage src={user.avatar || undefined} />
         <AvatarFallback>{(user.displayName || user.handle)[0].toUpperCase()}</AvatarFallback>
       </Avatar>
       <div className="flex-1 min-w-0">
-        <p className="text-[15px] font-medium text-black truncate">{user.displayName || user.handle}</p>
-        <p className="text-[13px] text-gray-500 truncate">@{user.handle}</p>
+        <p className="text-[15px] font-medium text-foreground truncate">{user.displayName || user.handle}</p>
+        <p className="text-[13px] text-muted-foreground truncate">@{user.handle}</p>
       </div>
       <Button
         variant="outline"
         size="sm"
         onClick={handleUnmute}
         disabled={isUnmuting}
-        className="rounded-full text-[13px] h-8 px-4 border-gray-300 text-black hover:bg-gray-100"
+        className="rounded-full text-[13px] h-8 px-4 border-border text-foreground hover:bg-muted"
       >
         {isUnmuting ? 'Unmuting...' : 'Unmute'}
       </Button>
@@ -416,12 +416,12 @@ function MutedWordItem({
   };
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-      <span className="text-[15px] text-black">#{word}</span>
+    <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+      <span className="text-[15px] text-foreground">#{word}</span>
       <button
         onClick={handleRemove}
         disabled={isRemoving}
-        className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+        className="p-2 text-muted-foreground hover:text-red-500 transition-colors"
       >
         <X className="h-4 w-4" />
       </button>
@@ -546,7 +546,7 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
             <Plus className="h-4 w-4" />
           </label>
         </div>
-        <p className="mt-3 text-[13px] text-gray-500">Tap to change avatar</p>
+        <p className="mt-3 text-[13px] text-muted-foreground">Tap to change avatar</p>
       </div>
 
       {/* Form Fields */}
@@ -556,19 +556,19 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
           <Input
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
-            className="mt-1 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+            className="mt-1 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
             placeholder="Your display name"
           />
         </div>
 
         <div className="px-4 py-3">
-          <label className="text-[13px] text-gray-500">Handle</label>
+          <label className="text-[13px] text-muted-foreground">Handle</label>
           <div className="relative mt-1">
-            <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               value={handle}
               onChange={(e) => setHandle(e.target.value)}
-              className="pl-9 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+              className="pl-9 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
               placeholder="your.handle"
             />
           </div>
@@ -577,12 +577,12 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
         <div className="px-4 py-3">
           <label className="text-[13px] text-muted-foreground">Email</label>
           <div className="relative mt-1">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="pl-9 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+              className="pl-9 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
               placeholder="your@email.com"
             />
           </div>
@@ -603,7 +603,7 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
           <Input
             value={website}
             onChange={(e) => setWebsite(e.target.value)}
-            className="mt-1 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+            className="mt-1 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
             placeholder="https://yourwebsite.com"
           />
         </div>
@@ -613,7 +613,7 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
       {message && (
         <div className={cn(
           "mx-4 mt-4 p-3 rounded-lg text-[14px]",
-          message.type === 'success' ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
+          message.type === 'success' ? "bg-green-500/10 text-green-600 dark:text-green-400" : "bg-destructive/10 text-destructive"
         )}>
           {message.text}
         </div>
@@ -631,13 +631,13 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
       </div>
 
       {/* Delete Account */}
-      <div className="border-t border-gray-200 mt-4">
+      <div className="border-t border-border mt-4">
         <div className="px-4 py-2 bg-muted">
           <h2 className="text-[13px] font-medium text-muted-foreground uppercase">Danger Zone</h2>
         </div>
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="w-full flex items-center gap-3 px-4 py-3.5 hover:bg-red-50 transition-colors"
+          className="w-full flex items-center gap-3 px-4 py-3.5 hover:bg-destructive/10 transition-colors"
         >
           <Trash2 className="h-5 w-5 text-red-500" />
           <span className="text-[15px] text-red-500">Delete Account</span>
@@ -647,17 +647,17 @@ export function AccountSettingsPage({ onBack }: { onBack?: () => void }) {
       {/* Delete Confirmation Modal */}
       <Modal isOpen={showDeleteConfirm} onClose={() => setShowDeleteConfirm(false)} title="Delete Account">
         <div className="p-4">
-          <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-red-100 rounded-full">
-            <AlertTriangle className="h-6 w-6 text-red-500" />
+          <div className="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-destructive/10 rounded-full">
+            <AlertTriangle className="h-6 w-6 text-destructive" />
           </div>
-          <p className="text-center text-[15px] text-gray-700 mb-4">
+          <p className="text-center text-[15px] text-muted-foreground mb-4">
             Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted.
           </p>
           <div className="flex gap-3">
             <Button
               variant="outline"
               onClick={() => setShowDeleteConfirm(false)}
-              className="flex-1 h-11 rounded-full border-gray-300 text-black"
+              className="flex-1 h-11 rounded-full border-border text-foreground"
             >
               Cancel
             </Button>
@@ -746,7 +746,7 @@ export function PrivacySecuritySettingsPage({ onBack }: { onBack?: () => void })
       <div className="bg-background min-h-screen">
         <SettingsHeader title="Privacy and Security" onBack={onBack} />
         <div className="flex items-center justify-center py-20">
-          <div className="h-6 w-6 border-2 border-gray-300 border-t-[#0085ff] rounded-full animate-spin" />
+          <div className="h-6 w-6 border-2 border-border border-t-[#0085ff] rounded-full animate-spin" />
         </div>
       </div>
     );
@@ -762,10 +762,10 @@ export function PrivacySecuritySettingsPage({ onBack }: { onBack?: () => void })
         />
         {blockedUsers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 px-4">
-            <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-              <Users className="h-8 w-8 text-gray-400" />
+            <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+              <Users className="h-8 w-8 text-muted-foreground" />
             </div>
-            <p className="text-[15px] text-gray-500 text-center">You haven't blocked any accounts yet.</p>
+            <p className="text-[15px] text-muted-foreground text-center">You haven't blocked any accounts yet.</p>
           </div>
         ) : (
           <div>
@@ -792,10 +792,10 @@ export function PrivacySecuritySettingsPage({ onBack }: { onBack?: () => void })
         />
         {mutedUsers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 px-4">
-            <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-              <Users className="h-8 w-8 text-gray-400" />
+            <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+              <Users className="h-8 w-8 text-muted-foreground" />
             </div>
-            <p className="text-[15px] text-gray-500 text-center">You haven't muted any accounts yet.</p>
+            <p className="text-[15px] text-muted-foreground text-center">You haven't muted any accounts yet.</p>
           </div>
         ) : (
           <div>
@@ -936,7 +936,7 @@ export function NotificationsSettingsPage({ onBack }: { onBack?: () => void }) {
       <div className="bg-background min-h-screen">
         <SettingsHeader title="Notifications" onBack={onBack} />
         <div className="flex items-center justify-center py-20">
-          <div className="h-6 w-6 border-2 border-gray-300 border-t-[#0085ff] rounded-full animate-spin" />
+          <div className="h-6 w-6 border-2 border-border border-t-[#0085ff] rounded-full animate-spin" />
         </div>
       </div>
     );
@@ -1028,7 +1028,7 @@ export function ContentMediaSettingsPage({ onBack }: { onBack?: () => void }) {
       <div className="bg-background min-h-screen">
         <SettingsHeader title="Content and Media" onBack={onBack} />
         <div className="flex items-center justify-center py-20">
-          <div className="h-6 w-6 border-2 border-gray-300 border-t-[#0085ff] rounded-full animate-spin" />
+          <div className="h-6 w-6 border-2 border-border border-t-[#0085ff] rounded-full animate-spin" />
         </div>
       </div>
     );
@@ -1072,8 +1072,8 @@ export function ContentMediaSettingsPage({ onBack }: { onBack?: () => void }) {
           <h2 className="text-[13px] font-medium text-muted-foreground uppercase">Media Quality</h2>
         </div>
         
-        <div className="px-4 py-3 border-b border-gray-100">
-          <p className="text-[15px] text-black mb-3">Image & Video Quality</p>
+        <div className="px-4 py-3 border-b border-border">
+          <p className="text-[15px] text-foreground mb-3">Image & Video Quality</p>
           <div className="flex gap-2">
             {['low', 'auto', 'high'].map((quality) => (
               <button
@@ -1105,7 +1105,7 @@ export function AppearanceSettingsPage({ onBack }: { onBack?: () => void }) {
       <div className="bg-background min-h-screen">
         <SettingsHeader title="Appearance" onBack={onBack} />
         <div className="flex items-center justify-center py-20">
-          <div className="h-6 w-6 border-2 border-gray-300 border-t-[#0085ff] rounded-full animate-spin" />
+          <div className="h-6 w-6 border-2 border-border border-t-[#0085ff] rounded-full animate-spin" />
         </div>
       </div>
     );
@@ -1121,7 +1121,7 @@ export function AppearanceSettingsPage({ onBack }: { onBack?: () => void }) {
           <h2 className="text-[13px] font-medium text-muted-foreground uppercase">Theme</h2>
         </div>
         
-        <div className="px-4 py-3 border-b border-gray-100">
+        <div className="px-4 py-3 border-b border-border">
           <div className="flex gap-3">
             {[
               { value: 'light', icon: Sun, label: 'Light' },
@@ -1152,7 +1152,7 @@ export function AppearanceSettingsPage({ onBack }: { onBack?: () => void }) {
           <h2 className="text-[13px] font-medium text-muted-foreground uppercase">Text Size</h2>
         </div>
         
-        <div className="px-4 py-3 border-b border-gray-100">
+        <div className="px-4 py-3 border-b border-border">
           <div className="flex gap-2">
             {['small', 'medium', 'large'].map((size) => (
               <button
@@ -1169,7 +1169,7 @@ export function AppearanceSettingsPage({ onBack }: { onBack?: () => void }) {
               </button>
             ))}
           </div>
-          <p className="mt-2 text-[12px] text-gray-400">
+          <p className="mt-2 text-[12px] text-muted-foreground">
             Current size: {settings?.fontSize || 'medium'} - changes apply immediately
           </p>
         </div>
@@ -1201,7 +1201,7 @@ export function AccessibilitySettingsPage({ onBack }: { onBack?: () => void }) {
       <div className="bg-background min-h-screen">
         <SettingsHeader title="Accessibility" onBack={onBack} />
         <div className="flex items-center justify-center py-20">
-          <div className="h-6 w-6 border-2 border-gray-300 border-t-[#0085ff] rounded-full animate-spin" />
+          <div className="h-6 w-6 border-2 border-border border-t-[#0085ff] rounded-full animate-spin" />
         </div>
       </div>
     );
@@ -1235,7 +1235,7 @@ export function AccessibilitySettingsPage({ onBack }: { onBack?: () => void }) {
       </div>
 
       <div className="px-4 py-4 text-center">
-        <p className="text-[12px] text-gray-400">
+        <p className="text-[12px] text-muted-foreground">
           Accessibility settings apply immediately across the app
         </p>
       </div>
@@ -1265,7 +1265,7 @@ export function LanguageSettingsPage({ onBack }: { onBack?: () => void }) {
       <div className="bg-background min-h-screen">
         <SettingsHeader title="Languages" onBack={onBack} />
         <div className="flex items-center justify-center py-20">
-          <div className="h-6 w-6 border-2 border-gray-300 border-t-[#0085ff] rounded-full animate-spin" />
+          <div className="h-6 w-6 border-2 border-border border-t-[#0085ff] rounded-full animate-spin" />
         </div>
       </div>
     );
@@ -1277,9 +1277,9 @@ export function LanguageSettingsPage({ onBack }: { onBack?: () => void }) {
     <div className="bg-background min-h-screen">
       <SettingsHeader title="Languages" onBack={onBack} />
 
-      <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
-        <p className="text-[13px] text-gray-500">
-          Current language: <span className="font-medium text-black">{currentLang?.name || 'English'}</span>
+      <div className="px-4 py-3 border-b border-border bg-muted">
+        <p className="text-[13px] text-muted-foreground">
+          Current language: <span className="font-medium text-foreground">{currentLang?.name || 'English'}</span>
         </p>
       </div>
 
@@ -1288,9 +1288,9 @@ export function LanguageSettingsPage({ onBack }: { onBack?: () => void }) {
           <button
             key={lang.code}
             onClick={() => updateSetting('language', lang.code)}
-            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-gray-50 transition-colors"
+            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-muted transition-colors"
           >
-            <span className="text-[15px] text-black">{lang.name}</span>
+            <span className="text-[15px] text-foreground">{lang.name}</span>
             {settings?.language === lang.code && (
               <Check className="h-5 w-5 text-[#0085ff]" />
             )}
@@ -1299,7 +1299,7 @@ export function LanguageSettingsPage({ onBack }: { onBack?: () => void }) {
       </div>
 
       <div className="px-4 py-4 text-center">
-        <p className="text-[12px] text-gray-400">
+        <p className="text-[12px] text-muted-foreground">
           Language preference is saved and will persist across sessions
         </p>
       </div>
@@ -1350,13 +1350,13 @@ export function HelpSettingsPage({ onBack }: { onBack?: () => void }) {
           <button
             key={index}
             onClick={() => handleItemClick(item.url)}
-            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-gray-50 transition-colors"
+            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-muted transition-colors"
           >
             <div className="flex-1 text-left">
-              <p className="text-[15px] text-black">{item.label}</p>
-              <p className="text-[13px] text-gray-500 mt-0.5">{item.description}</p>
+              <p className="text-[15px] text-foreground">{item.label}</p>
+              <p className="text-[13px] text-muted-foreground mt-0.5">{item.description}</p>
             </div>
-            <ExternalLink className="h-5 w-5 text-gray-400 shrink-0" />
+            <ExternalLink className="h-5 w-5 text-muted-foreground shrink-0" />
           </button>
         ))}
       </div>
@@ -1381,15 +1381,15 @@ export function AboutSettingsPage({ onBack }: { onBack?: () => void }) {
     <div className="bg-background min-h-screen">
       <SettingsHeader title="About" onBack={onBack} />
 
-      <div className="px-4 py-6 text-center border-b border-gray-200">
+      <div className="px-4 py-6 text-center border-b border-border">
         <svg viewBox="0 0 24 24" className="h-16 w-16 mx-auto text-[#0085ff]" fill="currentColor">
           <circle cx="12" cy="12" r="10" fill="currentColor"/>
           <circle cx="8" cy="10" r="1.5" fill="white"/>
           <circle cx="16" cy="10" r="1.5" fill="white"/>
           <path d="M8 14c0 0 1.5 3 4 3s4-3 4-3" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none"/>
         </svg>
-        <h2 className="mt-4 text-xl font-bold text-black">Bluesky</h2>
-        <p className="mt-1 text-[14px] text-gray-500">Version 1.0.0</p>
+        <h2 className="mt-4 text-xl font-bold text-foreground">Bluesky</h2>
+        <p className="mt-1 text-[14px] text-muted-foreground">Version 1.0.0</p>
       </div>
 
       <div className="divide-y divide-border">
@@ -1397,16 +1397,16 @@ export function AboutSettingsPage({ onBack }: { onBack?: () => void }) {
           <button
             key={index}
             onClick={() => handleItemClick(item.url)}
-            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-gray-50 transition-colors"
+            className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-muted transition-colors"
           >
-            <span className="text-[15px] text-black">{item.label}</span>
-            <ExternalLink className="h-5 w-5 text-gray-400" />
+            <span className="text-[15px] text-foreground">{item.label}</span>
+            <ExternalLink className="h-5 w-5 text-muted-foreground" />
           </button>
         ))}
       </div>
 
       <div className="px-4 py-6 text-center">
-        <p className="text-[13px] text-gray-500">
+        <p className="text-[13px] text-muted-foreground">
           Made with ❤️ by the Bluesky community
         </p>
       </div>
@@ -1484,13 +1484,13 @@ export function ModerationSettingsPage({ onBack }: { onBack?: () => void }) {
         />
         
         {/* Add new word */}
-        <div className="p-4 border-b border-gray-200">
+        <div className="p-4 border-b border-border">
           <div className="flex gap-2">
             <Input
               value={newWord}
               onChange={(e) => setNewWord(e.target.value)}
               placeholder="Enter a word to mute..."
-              className="h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+              className="h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
               onKeyDown={(e) => e.key === 'Enter' && addMutedWord()}
             />
             <Button
@@ -1501,17 +1501,17 @@ export function ModerationSettingsPage({ onBack }: { onBack?: () => void }) {
               {isAdding ? '...' : 'Add'}
             </Button>
           </div>
-          <p className="mt-2 text-[12px] text-gray-500">
+          <p className="mt-2 text-[12px] text-muted-foreground">
             Posts containing these words will be hidden from your feed.
           </p>
         </div>
         
         {mutedWords.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 px-4">
-            <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
-              <Tag className="h-8 w-8 text-gray-400" />
+            <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+              <Tag className="h-8 w-8 text-muted-foreground" />
             </div>
-            <p className="text-[15px] text-gray-500 text-center">No muted words yet.</p>
+            <p className="text-[15px] text-muted-foreground text-center">No muted words yet.</p>
           </div>
         ) : (
           <div>
@@ -1617,7 +1617,7 @@ export function AddAccountSettingsPage({ onBack }: { onBack?: () => void }) {
         
         <form onSubmit={handleLogin} className="p-4 space-y-4">
           {error && (
-            <div className="flex items-center gap-2 p-3 bg-red-50 text-red-700 rounded-lg text-[14px]">
+          <div className="flex items-center gap-2 p-3 bg-destructive/10 text-destructive rounded-lg text-[14px]">
               <AlertCircle className="h-4 w-4 shrink-0" />
               {error}
             </div>
@@ -1626,11 +1626,11 @@ export function AddAccountSettingsPage({ onBack }: { onBack?: () => void }) {
           <div>
           <label className="text-[13px] text-muted-foreground">Handle</label>
             <div className="relative mt-1">
-              <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <AtSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 value={handle}
                 onChange={(e) => setHandle(e.target.value)}
-                className="pl-9 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+                className="pl-9 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
                 placeholder="your.handle"
                 required
               />
@@ -1638,12 +1638,12 @@ export function AddAccountSettingsPage({ onBack }: { onBack?: () => void }) {
           </div>
 
           <div>
-            <label className="text-[13px] text-gray-500">Password</label>
+            <label className="text-[13px] text-muted-foreground">Password</label>
             <Input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 h-10 text-[15px] border-gray-200 focus-visible:ring-[#0085ff]"
+              className="mt-1 h-10 text-[15px] border-border focus-visible:ring-[#0085ff]"
               placeholder="Enter password"
               required
             />
@@ -1666,11 +1666,11 @@ export function AddAccountSettingsPage({ onBack }: { onBack?: () => void }) {
       <SettingsHeader title="Add Account" onBack={onBack} />
 
       <div className="p-6 text-center">
-        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-          <UserPlus className="h-10 w-10 text-gray-400" />
+        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
+          <UserPlus className="h-10 w-10 text-muted-foreground" />
         </div>
-        <h2 className="text-xl font-semibold text-black mb-2">Add Another Account</h2>
-        <p className="text-[15px] text-gray-500 mb-6">
+        <h2 className="text-xl font-semibold text-foreground mb-2">Add Another Account</h2>
+        <p className="text-[15px] text-muted-foreground mb-6">
           Sign in to another Bluesky account to switch between them easily.
         </p>
       </div>
@@ -1678,13 +1678,13 @@ export function AddAccountSettingsPage({ onBack }: { onBack?: () => void }) {
       <div className="divide-y divide-border">
         <button
           onClick={() => setShowLoginForm(true)}
-          className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-gray-50 transition-colors"
+          className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-muted transition-colors"
         >
           <div className="flex-1 text-left">
-            <p className="text-[15px] text-black">Sign in to existing account</p>
-            <p className="text-[13px] text-gray-500 mt-0.5">Use your handle and password</p>
+            <p className="text-[15px] text-foreground">Sign in to existing account</p>
+            <p className="text-[13px] text-muted-foreground mt-0.5">Use your handle and password</p>
           </div>
-          <ChevronRight className="h-5 w-5 text-gray-400 shrink-0" />
+          <ChevronRight className="h-5 w-5 text-muted-foreground shrink-0" />
         </button>
 
         <button
@@ -1692,18 +1692,18 @@ export function AddAccountSettingsPage({ onBack }: { onBack?: () => void }) {
             logout();
             window.location.href = '/';
           }}
-          className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-gray-50 transition-colors"
+          className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-muted transition-colors"
         >
           <div className="flex-1 text-left">
-            <p className="text-[15px] text-black">Create new account</p>
-            <p className="text-[13px] text-gray-500 mt-0.5">Sign up for a new Bluesky account</p>
+            <p className="text-[15px] text-foreground">Create new account</p>
+            <p className="text-[13px] text-muted-foreground mt-0.5">Sign up for a new Bluesky account</p>
           </div>
-          <ChevronRight className="h-5 w-5 text-gray-400 shrink-0" />
+          <ChevronRight className="h-5 w-5 text-muted-foreground shrink-0" />
         </button>
       </div>
 
       <div className="p-4 mt-4">
-        <p className="text-[12px] text-gray-400 text-center">
+        <p className="text-[12px] text-muted-foreground text-center">
           You can switch between accounts by signing out and signing in with different credentials.
         </p>
       </div>
